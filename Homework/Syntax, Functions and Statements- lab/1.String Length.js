@@ -1,10 +1,11 @@
-function fruit(fruit,gramms,price){
+function arrayLength(a,b,c)
+{
+    let tokens=[a,b,c];
+    let length=tokens.join("").length;
+    let averageLenght=length/tokens.length;
 
-        let weightInKg=gramms/1000;
-        let totalPrice=weightInKg*price;
-
-        return  `I need $${totalPrice.toFixed(2)} to buy ${weightInKg.toFixed(2)} kilograms ${fruit}.`
-        //return a+' '+b+' '+c;
+    console.log(length);
+    console.log(Math.round(averageLenght));
 }
 
-//console.log('first','second','third')
+arrayLength('pasta', '5', '22.3');
