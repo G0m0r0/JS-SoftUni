@@ -1,7 +1,7 @@
 function printArrayByGivenDelimeter(array)
 {
-    let delimeter=array.pop();
-    console.log(array.join(delimeter));
+    let delimiter=array.pop();
+    console.log(array.join(delimiter));
 }
 
 printArrayByGivenDelimeter(['One', 'Two', 'Three', 'Four', 'Five', '=']);
