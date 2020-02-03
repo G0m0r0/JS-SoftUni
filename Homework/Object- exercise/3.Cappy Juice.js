@@ -7,7 +7,7 @@ function juicesFactory(input){
 
         let sort=tokens[0];
         let quantity=tokens[1];
-        
+
         if(parseInput[sort]){
             parseInput[sort]+=Number(quantity);
         }
@@ -22,6 +22,10 @@ function juicesFactory(input){
             juice[sort]=bottleQ;
         }
     }
+
+    console.log(parseInput);
+    console.log(juice);
+    console.log(Object.entries(juice));
 
     let finalParsedData=Object.entries(juice);
 

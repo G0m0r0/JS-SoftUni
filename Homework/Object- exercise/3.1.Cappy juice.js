@@ -1,7 +1,7 @@
 function juiceFactoryWithReduce(data)
 {
     let parsedData=data.reduce((juiceAcc, juiceKVP)=>{
-        let[juiceName,quantity]=juiceKVP.split(' => ');
+        let[juiceName,quantity]=juiceKVP.split(' => ');        
 
         if(juiceAcc.currentJuiceQuantity[juiceName]){
             juiceAcc.currentJuiceQuantity[juiceName]+=Number(quantity);
