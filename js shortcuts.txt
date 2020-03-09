@@ -1,2 +1,3 @@
 ctrl+mark+/     comment multiline
 /**             notation to set initial value of element
+ctrl+p          search
