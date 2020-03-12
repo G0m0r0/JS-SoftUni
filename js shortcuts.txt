@@ -1,3 +1,4 @@
 ctrl+mark+/     comment multiline
 /**             notation to set initial value of element
 ctrl+p          search
+cmd(search tab) code . opens visual studio code
