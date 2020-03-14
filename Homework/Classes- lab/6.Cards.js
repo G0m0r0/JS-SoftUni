@@ -5,8 +5,8 @@ let result=(function () {
   	    HEARTS: '♥',
         DIAMONDS: '♦',
      	CLUBS: '♣',
-
     }
+    
     class Card{
         constructor(face,suit){
             this.face=face;
