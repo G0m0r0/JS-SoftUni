@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div class="content">
+        <p id="toRemove">This came from HTML file</p>
+   </div>
+   <input type="text"/> 
+   <script>
+       let myDiv=document.getElementsByTagName('div')[0];
+       //myDiv.innerHTML='pesho';
+       //myDiv.textContent='<script>alert(1);<//script>';
+        let  paragraph= document.createElement('p');
+        paragraph.textContent='My paragraph'; //exist as object we have to attach it to dom
+        myDiv.appendChild(paragraph);
+
+        let pToRemove=document.getElementById('toRemove');
+        pToRemove.remove();
+
+        console.log(pToRemove); //shows it on the browser console
+
+        //attributes
+        let inp=document.getElementsByTagName('input')[0];
+        inp.setAttribute('type','number');
+        inp.setAttribute('placeholder','username');
+        //inp.value="Pesho";
+   </script>
+</body>
+</html>
