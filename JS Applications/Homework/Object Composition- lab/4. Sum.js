@@ -1,0 +1,5 @@
+function modify(){
+    const obj={
+        
+    }
+}
