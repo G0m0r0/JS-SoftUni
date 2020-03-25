@@ -71,3 +71,8 @@ input {
 input[type=button] {
     background-color: aquamarine;
 }
+
+.notification{
+    text-align: center;
+    color: darkred;
+}
