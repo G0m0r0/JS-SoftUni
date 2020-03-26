@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="email" id="username" placeholder="email"/>
+    <input type="password" id="password" placeholder="password"/>
+    <button type="button" id="btn">Register</button>
+    <div id="error" style="color: red"></div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!--<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>-->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAxkgHcQyo_Ph9c_7ORqa3uQiQPzYB2z3M",
+    authDomain: "softuniremotedb-my.firebaseapp.com",
+    databaseURL: "https://softuniremotedb-my.firebaseio.com",
+    projectId: "softuniremotedb-my",
+    storageBucket: "softuniremotedb-my.appspot.com",
+    messagingSenderId: "783698062841",
+    appId: "1:783698062841:web:fbbfdf29ad998b20116128"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  let btn=document.getElementById('btn');
+
+    btn.onclick=(e)=>{
+        let email=document.getElementById('username').value;
+        let password=document.getElementById('password').value;
+        let error=document.getElementById('error');
+        error.innerText='';
+
+        if(!(email&&password)){
+            error.innerText='Email or password required!';
+        }
+
+        firebase.auth().createUserWithEmailAndPassword(email,password)
+        .catch(function(error){
+            let errorCode=error.code;
+            let errorMessage=error.message;
+            error.innerText=`Error code: ${errorCode}, Message: ${errorMessage}`;
+        });
+    }
+</script>
+<script>
+</script>
+</body>
+</html>
