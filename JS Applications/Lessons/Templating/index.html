@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="node_modules/handlebars/dist/handlebars.js"></script>
+<script type="text/x-handlebars-template" id="myTemplate">
+    <p>Hello, my name is {{name}} {{familyName}}!</p>
+</script>
+<script>
+    var template=Handlebars.compile(document.getElementById('myTemplate').innerText);
+    template({name:"pesho",familyName: "Petrov"});
+</script>
+</html>
