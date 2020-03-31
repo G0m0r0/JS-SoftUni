@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DonUni</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+    <div id="root">
+
+
+    </div>
+    <!-- Node Modules -->
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="./node_modules/sammy/lib/sammy.js"></script>
+    <script src="./node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
+    <script src="./node_modules/popper.js/dist/umd/popper.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCc1TeGfzYEAiK6CsK9un6CEaGmezdiMv8",
+          authDomain: "cuaseprep.firebaseapp.com",
+          databaseURL: "https://cuaseprep.firebaseio.com",
+          projectId: "cuaseprep",
+          storageBucket: "cuaseprep.appspot.com",
+          messagingSenderId: "595496796765",
+          appId: "1:595496796765:web:3c969296d30f343cba43b4",
+          measurementId: "G-FP6WYDW8KJ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //firebase.analytics();
+        </script>
+
+        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <!-- ./Node Modules -->
+
+    <!-- Helpers -->
+    <!-- ./Helpers -->
+
+    <!-- Controllers -->
+    <!-- ./Controllers -->
+
+    <!-- Models -->
+    <!-- ./Models -->
+
+    <!-- APP -->
+    <!-- ./APP -->
+    <script type="module" src="./scripts/app.js"></script>
+
+</body>
+
+</html>
