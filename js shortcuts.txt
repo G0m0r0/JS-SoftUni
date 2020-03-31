@@ -3,4 +3,4 @@ ctrl+mark+/     comment multiline
 ctrl+p          search
 cmd(search tab) code . opens visual studio code
 shift+Alt+A     comment multiline
-hold Alt for multiType
+hold Alt+click for multiType

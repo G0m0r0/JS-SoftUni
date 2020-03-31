@@ -15,13 +15,7 @@ const app=Sammy('#root',function(){
     this.get("#/user/logout",controllers.user.get.logout);
     //causes
 
-    this.get('#/cause/dashboard',controllers.cause.get.dashboard)
-    this.get('#/cause/create',controllers.cause.get.create);
-    this.get('#/cause/details/:causeId',controllers.cause.get.details); //we can access it from controller-cause
-
-    this.post('#/cause/create',controllers.cause.post.create);
-    this.get('#/cause/close/:causeId',controllers.cause.del.close);
-    this.post('#/cause/donate/:causeId',controllers.cause.put.donate);
+    treks
 });
 
 (()=>{
