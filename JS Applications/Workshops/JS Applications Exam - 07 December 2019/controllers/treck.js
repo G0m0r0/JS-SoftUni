@@ -1,6 +1,7 @@
 import extend from '../utilities/context.js';
 import models from '../models/index.js';
 import docModified from '../utilities/doc-modified.js';
+import treck from '../models/treck.js';
 
 export default {
     get:{
@@ -24,6 +25,24 @@ export default {
                 this.partial('../views/treck/create.hbs');
             })
         },
+        edit(context){
+            const {treckId}=context.params;
+
+             models.treck.get(treckId).then(response=>{
+                const treck=docModified(response);
+
+                Object.keys(treck).forEach(key=>{
+                    context[key]=treck[key];
+                    console.log(key);
+                    console.log(context[key]);
+                });
+          
+            }).catch(error=>console.error(error));
+
+            extend(context).then(function(){
+                this.partial('../views/treck/edit.hbs');
+            });
+        },
          details(context){
             const {treckId}=context.params;
             //console.log(treckId);
@@ -35,9 +54,12 @@ export default {
 
                 Object.keys(treck).forEach(key=>{
                     context[key]=treck[key];
+                    //console.log(key);
+                    //console.log(context[key])
                 });
 
-                //context.canDonate=cause.uId!==localStorage.getItem('userId');
+                context.canEdit=treck.data.creator===localStorage.getItem('userEmail');
+                //console.log(context.canEdit);
 
                 extend(context).then(function(){
                     this.partial('../views/treck/details.hbs');
@@ -53,9 +75,9 @@ export default {
                 ...context.params, 
                 uid: localStorage.getItem('userId'),
                 collectedLikes:0,
-                //creator=
+                creator: localStorage.getItem('userEmail')
             };
-            console.log(data);
+            //console.log(data);
 
             models.treck.create(data).then(response=>{
                 //console.log(response);
@@ -65,29 +87,36 @@ export default {
     },
     del:{
          close(context){
-            const {causeId}=context.params;
+            const {treckId}=context.params;
 
-            models.cause.close(causeId).then(response=>{
+            models.treck.close(treckId).then(response=>{
                 context.redirect('#/treck/dashboard');
             })
         } 
     },
     put: {
-       /*  donate(context){
-            const {causeId,donatedAmount}=context.params;
+         like(context){
+            const {treckId}=context.params;
+            console.log('hi');
 
-            models.cause.get(causeId).then(response=>{
-                const cause=docModified(response);
+            models.treck.get(treckId).then(response=>{
+                const treck=docModified(response);
+                console.log(treck);
 
-                cause.collectedFunds+=Number(donatedAmount);
-                cause.donors.push(localStorage.getItem('userEmail'));
+                //treck.collectedLikes++;
+                treck.data.collectedLikes++;
 
-                return models.cause.donate(causeId,cause);
+                return models.treck.like(treckId,treck);
             }).then(response=>{
-                context.redirect('#/cause/dashboard');
-            }) */
+                context.redirect('#/treck/dashboard');
+            }) 
 
             
             //console.log(donatedAmount);
+        },
+        edit(context){
+            let input=document.getElementsByTagName('input')[0];
+            input.value="Hello";
         }
     }
+}

@@ -8,11 +8,12 @@
         <p class="infoType">Description:</p>
         <p class="trek-description">{{data.description}}</p>
         <p class="infoType">Date: <large>{{data.dateTime}}</large></p>
-        <p class="infoType">Likes: <large>0</large></p>
-        <p class="infoType">Organizer: <large>{{ username }}</large></p>
+        <p class="infoType">Likes: <large>{{data.collectedLikes}}</large></p>
+        <p class="infoType">Organizer: <large>{{ data.creator }}</large></p>
       </div>
       <div class = "buttons-together">
-      <a class="a-button" href="#/treck/details/treckId" >
+        {{#if canEdit}}
+      <a class="a-button" href="#/treck/edit/{{id}}" >
         <svg version="1.1" id="edit-button" width="30px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 293.129 293.129" style="enable-background:new 0 0 293.129 293.129;" xml:space="preserve">
 
@@ -32,7 +33,7 @@
 </svg>
 Edit the trek
       </a>
-      <a class="a-button" href="#" >
+      <a class="a-button" href="#/treck/close/{{id}}">
         <svg version="1.1" width="30px" id="remove-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 507.2 507.2" style="enable-background:new 0 0 507.2 507.2;" xml:space="preserve">
 <circle style="fill:rgb(248, 184, 8);" cx="253.6" cy="253.6" r="253.6"/>
@@ -46,7 +47,8 @@ Edit the trek
 </svg>
 Close the trek
       </a>
-      <a class="a-button" href="#" > 
+      {{else}}
+      <a class="a-button" href="#/treck/like/{{id}}" > 
       <svg version="1.1" width="30px" id="like-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
      <path style="fill:rgb(248, 184, 8)" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
@@ -56,6 +58,7 @@ Close the trek
        c-4.411,0-8,3.589-8,8C7,17.631,6.553,18.078,6,18.078z"/>
      </svg>
      Like</a>
+     {{/if}}
     </div>
     </div>
   </div>

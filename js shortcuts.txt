@@ -1,7 +1,8 @@
-ctrl+mark+/     comment multiline
-/**             notation to set initial value of element
-ctrl+p          search
-cmd(search tab) code . opens visual studio code
-shift+Alt+A     comment multiline
-hold Alt+click for multiType
-code spell checker
+ctrl+mark+/        comment multiline
+/**                notation to set initial value of element
+ctrl+p             search
+cmd(search tab)    code . opens visual studio code
+shift+Alt+A        comment multiline
+hold Alt+click     for multiType
+code spell checker for cheking the cpelling of words
+ctrl+/              comment text

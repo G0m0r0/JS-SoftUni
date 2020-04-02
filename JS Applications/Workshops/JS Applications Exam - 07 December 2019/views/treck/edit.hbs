@@ -1,8 +1,8 @@
-  
-  <form class="create-trek" action="#" method="post">
+  {{> header}}
+  <form class="create-trek" action="#/treck/edit" method="post">
 
     <div class="form-label-group">
-      <input type="text"  name="location" class="form-control" placeholder="Location" required="" autofocus="" value = "">
+      <input type="text"  name="location" class="form-control" placeholder="Location" required="" autofocus="" value = "haha">
       <label for="inputTrekName">Location</label>
     </div>
 
@@ -27,3 +27,5 @@
 
     <button class="btn btn-lg btn-dark btn-block" type="submit">Edit the trek</button>
   </form>
+
+  {{> footer}}

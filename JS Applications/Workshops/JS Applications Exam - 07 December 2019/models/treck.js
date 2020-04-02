@@ -6,12 +6,13 @@ export default{
         return firebase.firestore().collection('treks').get();
     },
     get(id){
-        return firebase.firestore().collection('treks').doc(id).get(); //make request to specific documment with id
+        return firebase.firestore().collection('treks').doc(id).get(); //make request to specific document with id
     },
-    close(){
+    close(id){
         return firebase.firestore().collection('treks').doc(id).delete();
     },
-    donate(id,data){
+    like(id,data){
         return firebase.firestore().collection('treks').doc(id).update(data);
-    }
+    },
+
 };

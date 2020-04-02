@@ -22,7 +22,11 @@ const app=Sammy('#root',function(){
 
     this.post('#/treck/create',controllers.treck.post.create);
     
+    this.get("#/treck/close/:treckId",controllers.treck.del.close);
+    this.post('#/treck/like/:treckId',controllers.treck.put.like);
 
+    this.get('#/treck/edit/:treckId',controllers.treck.get.edit);
+   // this.post('#/treck/')
 });
 
 (()=>{

@@ -18,8 +18,7 @@ export default {
         logout(context){
             models.user.logout().then(response=>{
                 context.redirect('#/home');
-            })
-        },
+            })},
         profile(context){
                 extend(context).then(function(){
                     this.partial('../views/user/profile.hbs');

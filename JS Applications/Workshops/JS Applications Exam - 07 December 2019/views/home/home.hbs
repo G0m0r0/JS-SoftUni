@@ -1,9 +1,7 @@
 {{> header}}
-
 {{#if isLoggedIn}}
-
-  <div id="treks-list">
-{{#each trecks}}
+     <div id="treks-list">
+       {{#each trecks}}
     <a href="#/treck/details/{{ id }}" class="card overflow-hidden treksPlaceholder trek-details" style="width: 20rem; height: 18rem;">
       <div class="card-body">
         <p class="card-text">{{data.location}}</p>
@@ -12,7 +10,8 @@
         src="{{data.imageURL}}"
         alt="Card image cap">
     </a>
-{{else}}
+    {{else}}
+
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -34,10 +33,11 @@
       </div>
     </div>
   </div> 
-  {{/each}}
-          </div>
-
+    </div> 
+    {{/each}}
   {{else}}
+
+        
   <div class="home d-md-flex flex-md-equal  my-md-3 pl-md-3">
     <div style=" padding-left: 7%; padding-top:3%;" class="col-md-7">
       <h2 class="featurette-heading">Here you will find the treks you've <span class="text-highlighted">always dreamed
