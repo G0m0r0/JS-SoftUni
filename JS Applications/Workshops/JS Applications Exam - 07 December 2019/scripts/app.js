@@ -15,14 +15,13 @@ const app=Sammy('#root',function(){
     this.get("#/user/logout",controllers.user.get.logout);
     //trecks
 
+    this.get('#/treck/dashboard',controllers.treck.get.dashboard);
     this.get("#/treck/create",controllers.treck.get.create);
-    //this.get('#/user/profile',controllers.cause.get.profile)
-    //this.get('#/cause/create',controllers.cause.get.create);
-    //this.get('#/cause/details/:causeId',controllers.cause.get.details); //we can access it from controller-cause
+    this.get('#/user/profile',controllers.user.get.profile);
+    this.get("#/treck/details/:treckId",controllers.treck.get.details);
 
-    //this.post('#/cause/create',controllers.cause.post.create);
-    //this.get('#/cause/close/:causeId',controllers.cause.del.close);
-    //this.post('#/cause/donate/:causeId',controllers.cause.put.donate);
+    this.post('#/treck/create',controllers.treck.post.create);
+    
 
 });
 

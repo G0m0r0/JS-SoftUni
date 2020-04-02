@@ -19,6 +19,23 @@ export default {
             models.user.logout().then(response=>{
                 context.redirect('#/home');
             })
+        },
+        profile(context){
+                extend(context).then(function(){
+                    this.partial('../views/user/profile.hbs');
+                })
+             /*  const {treckId}=context.params;
+              console.log(treckId);
+  
+               models.treck.get(treckId).then(response=>{
+                  const causes=response.docs.map(docModified);
+                  
+                  context.causes=causes;
+  
+                  extend(context).then(function(){
+                      this.partial('../views/user/profile.hbs');
+                  })
+            });  */
         }
     },
     post: {
@@ -34,7 +51,7 @@ export default {
                 context.username=response.email;
                 context.isLoggedIn=true;
 
-                context.redirect('#/home');
+                context.redirect('#/treck/dashboard');
             })
             .catch(error=>{
                 console.error(error);
@@ -46,7 +63,7 @@ export default {
             if(password===rePassword){
                 models.user.register(username,password)
                 .then(response=>{
-                    context.redirect("#/user/login");
+                    context.redirect("#/treck/dashboard");
                 })
                 .catch(error=>{
                     console.error(error);

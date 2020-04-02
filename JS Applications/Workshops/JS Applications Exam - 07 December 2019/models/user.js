@@ -9,5 +9,8 @@ export default{
     },
     logout(){
         return firebase.auth().signOut();
+    },
+    get(id){
+        return firebase.firestore().collection('treks').doc(id).get(); //make request to specific document with id
     }
 };

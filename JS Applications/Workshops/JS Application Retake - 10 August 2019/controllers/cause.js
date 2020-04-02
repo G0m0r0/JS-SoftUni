@@ -8,8 +8,9 @@ export default {
 
             models.cause.getAll().then(response=>{
                 const causes=response.docs.map(docModified);
-                
+                //console.log(causes);
                 context.causes=causes;
+                //context.log(context.causes);
 
                 extend(context).then(function(){
                     this.partial('../views/cause/dashboard.hbs');
@@ -26,16 +27,17 @@ export default {
             const {causeId}=context.params;
 
             models.cause.get(causeId).then(response=>{
-                //console.log(response);
                 const cause=docModified(response);
-                //console.log(cause);
 
                 Object.keys(cause).forEach(key=>{
-                    console.log(cause[key]);
                     context[key]=cause[key];
+                    //!!!console.log(key);
+                    //!!!console.log(context[key]);
                 });
 
-                context.canDonate=cause.uId!==localStorage.getItem('userId');
+                //console.log(cause.data);
+                //DON'T FORGET cause.data!!!!!!!!!!!
+                context.canDonate=cause.data.uId!==localStorage.getItem('userId');
 
                 extend(context).then(function(){
                     this.partial('../views/cause/details.hbs');
@@ -49,10 +51,11 @@ export default {
 
             const data={
                 ...context.params, 
-                uid: localStorage.getItem('userId'),
+                uId: localStorage.getItem('userId'),
                 collectedFunds: 0,
                 donors: []
             };
+            //console.log(data)
 
             models.cause.create(data).then(response=>{
                 //console.log(response);
@@ -63,6 +66,7 @@ export default {
     del:{
         close(context){
             const {causeId}=context.params;
+            //console.log(causeId);
 
             models.cause.close(causeId).then(response=>{
                 context.redirect('#/cause/dashboard');
@@ -72,12 +76,18 @@ export default {
     put: {
         donate(context){
             const {causeId,donatedAmount}=context.params;
+            //console.log(causeId);
+            //console.log(donatedAmount);
 
             models.cause.get(causeId).then(response=>{
                 const cause=docModified(response);
 
-                cause.collectedFunds+=Number(donatedAmount);
-                cause.donors.push(localStorage.getItem('userEmail'));
+                cause.data.collectedFunds+=Number(donatedAmount);
+
+                //add only one person to the list of donors
+                if(!cause.data.donors.includes(localStorage.getItem('userEmail'))){
+                    cause.data.donors.push(localStorage.getItem('userEmail'));
+                }        
 
                 return models.cause.donate(causeId,cause);
             }).then(response=>{

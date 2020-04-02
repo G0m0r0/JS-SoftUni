@@ -6,9 +6,9 @@ export default{
         return firebase.firestore().collection('causes').get();
     },
     get(id){
-        return firebase.firestore().collection('causes').doc(id).get(); //make request to specific documment with id
+        return firebase.firestore().collection('causes').doc(id).get(); //make request to specific document with id
     },
-    close(){
+    close(id){
         return firebase.firestore().collection('causes').doc(id).delete();
     },
     donate(id,data){

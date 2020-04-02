@@ -4,3 +4,4 @@ ctrl+p          search
 cmd(search tab) code . opens visual studio code
 shift+Alt+A     comment multiline
 hold Alt+click for multiType
+code spell checker

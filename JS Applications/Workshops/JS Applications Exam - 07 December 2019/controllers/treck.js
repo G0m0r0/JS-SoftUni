@@ -1,73 +1,76 @@
 import extend from '../utilities/context.js';
 import models from '../models/index.js';
-//import docModified from '../utilities/doc-modified.js';
+import docModified from '../utilities/doc-modified.js';
 
 export default {
     get:{
-       /*   dashboard(context){
+        dashboard(context){
 
-            models.cause.getAll().then(response=>{
-                const causes=response.docs.map(docModified);
-                
-                context.causes=causes;
+            models.treck.getAll().then(response=>{
+                const trecks=response.docs.map(docModified);
+                //console.log(trecks);
+                             
+                 context.trecks=trecks;
 
                 extend(context).then(function(){
-                    this.partial('../views/cause/dashboard.hbs');
-                })
+                    this.partial('../views/home/home.hbs');
+                }) 
             });
             
-        },  */
+        },       
         create(context){
             extend(context).then(function(){
+                //console.log('hi');
                 this.partial('../views/treck/create.hbs');
             })
         },
-        /* details(context){
-            const {causeId}=context.params;
+         details(context){
+            const {treckId}=context.params;
+            //console.log(treckId);
 
-            models.cause.get(causeId).then(response=>{
+             models.treck.get(treckId).then(response=>{
                 //console.log(response);
-                const cause=docModified(response);
+                const treck=docModified(response);
                 //console.log(cause);
 
-                Object.keys(cause).forEach(key=>{
-                    console.log(cause[key]);
-                    context[key]=cause[key];
+                Object.keys(treck).forEach(key=>{
+                    context[key]=treck[key];
                 });
 
-                context.canDonate=cause.uId!==localStorage.getItem('userId');
+                //context.canDonate=cause.uId!==localStorage.getItem('userId');
 
                 extend(context).then(function(){
-                    this.partial('../views/cause/details.hbs');
-                })
+                    this.partial('../views/treck/details.hbs');
+                }) 
 
             }).catch(error=>console.error(error));
-        } */
+        } 
     },
     post:{
-       /*  create(context){
+         create(context){
 
             const data={
                 ...context.params, 
                 uid: localStorage.getItem('userId'),
-                collectedFunds: 0,
-                donors: []
+                collectedLikes:0,
+                //creator=
             };
+            console.log(data);
 
-            models.cause.create(data).then(response=>{
+            models.treck.create(data).then(response=>{
                 //console.log(response);
-                context.redirect('#/cause/dashboard');
+                context.redirect('#/treck/dashboard');
             }).catch(e=>console.error(e));
-        } */
+        } 
     },
     del:{
-        /* close(context){
+         close(context){
             const {causeId}=context.params;
 
             models.cause.close(causeId).then(response=>{
-                context.redirect('#/cause/dashboard');
+                context.redirect('#/treck/dashboard');
             })
-        } */
+        } 
     },
     put: {
        /*  donate(context){

@@ -25,6 +25,10 @@ export default {
         login(context){
             const {username,password}=context.params;
 
+            //notification
+            context.notification=true;
+            context.message="Successful login!";
+            //
             models.user.login(username,password)
             .then(response=>{
                 context.user=response;
