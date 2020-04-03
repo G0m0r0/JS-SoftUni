@@ -1,5 +1,6 @@
 import models from '../models/index.js';
 import extend from '../utilities/context.js';
+import docModified from '../utilities/doc-modified.js';
 
 export default {
     get:{
@@ -19,22 +20,33 @@ export default {
             models.user.logout().then(response=>{
                 context.redirect('#/home');
             })},
-        profile(context){
-                extend(context).then(function(){
+        profile(context){                         
+            models.treck.getAll().then(response=>{
+                console.log(response);
+                const trecks=response.docs.map(docModified);
+
+                let dataOfProfile={
+                    countTrecks: 0,
+                    nameTrecks: [],
+                };
+
+                trecks.forEach(el=>{
+                    if(el.data.uid===localStorage.getItem('userId')){
+                        dataOfProfile.countTrecks++;
+                        dataOfProfile.nameTrecks.push(el.data.location);
+                    }
+                });
+
+                if(dataOfProfile.nameTrecks.length===0){
+                    dataOfProfile.nameTrecks="No treks";
+                }
+
+                context.dataOfProfile=dataOfProfile;
+
+                 extend(context).then(function(){
                     this.partial('../views/user/profile.hbs');
-                })
-             /*  const {treckId}=context.params;
-              console.log(treckId);
-  
-               models.treck.get(treckId).then(response=>{
-                  const causes=response.docs.map(docModified);
-                  
-                  context.causes=causes;
-  
-                  extend(context).then(function(){
-                      this.partial('../views/user/profile.hbs');
-                  })
-            });  */
+                }) 
+            });
         }
     },
     post: {

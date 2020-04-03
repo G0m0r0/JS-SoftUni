@@ -11,8 +11,7 @@ export default{
     close(id){
         return firebase.firestore().collection('treks').doc(id).delete();
     },
-    like(id,data){
+    update(id,data){
         return firebase.firestore().collection('treks').doc(id).update(data);
     },
-
 };

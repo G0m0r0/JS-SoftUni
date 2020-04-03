@@ -6,10 +6,12 @@ export default function(context){
              // console.log(user);
               context.isLoggedIn=true;
               context.userId=user.uid;
-              context.username=user.email;
+              context.username=user.email;    
 
               localStorage.setItem('userId',user.uid);
               localStorage.setItem('userEmail',user.email)
+              
+              
               // ...
             } else {
               // User is signed out.
@@ -27,6 +29,6 @@ export default function(context){
 
     return context.loadPartials({
         header: "../views/common/header.hbs",
-        footer: "../views/common/footer.hbs"
+        footer: "../views/common/footer.hbs",
     })
 }
