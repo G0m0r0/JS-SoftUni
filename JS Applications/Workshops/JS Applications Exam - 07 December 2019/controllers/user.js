@@ -22,7 +22,7 @@ export default {
             })},
         profile(context){                         
             models.treck.getAll().then(response=>{
-                console.log(response);
+                //console.log(response);
                 const trecks=response.docs.map(docModified);
 
                 let dataOfProfile={

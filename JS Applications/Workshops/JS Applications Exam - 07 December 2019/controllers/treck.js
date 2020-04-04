@@ -39,7 +39,7 @@ export default {
                 let description=document.getElementsByTagName('textarea')[0];
                 let image=document.getElementsByTagName('input')[2];
                 let button=document.getElementsByTagName('button')[0];
-                console.log(button);
+                //console.log(button);
 
                 location.value=treck.data.location;
                 date.value=treck.data.dateTime;

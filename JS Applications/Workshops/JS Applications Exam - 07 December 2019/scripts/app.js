@@ -26,8 +26,6 @@ const app=Sammy('#root',function(){
     this.get('#/treck/like/:treckId',controllers.treck.put.update);
 
     this.get('#/treck/edit/:treckId',controllers.treck.get.edit);
-    //this.patch('#/treck/edit/:treckId',controllers.treck.patch.edit);
-
 });
 
 (()=>{
