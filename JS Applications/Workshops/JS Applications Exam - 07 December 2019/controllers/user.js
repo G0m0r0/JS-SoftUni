@@ -7,7 +7,7 @@ export default {
         login(context){
            // console.log(context);
 
-            extend(context).then(function(){
+            extend(context).then(function(){       
                 this.partial('../views/user/login.hbs');
             })
         },
@@ -55,6 +55,16 @@ export default {
             const {username,password}=context.params;
             //console.log(username);
            // console.log(password);
+           
+                 const notification=document.getElementById('notifications');
+                 const message=document.createElement('div');
+                 message.setAttribute('id','seccessBox');
+                 message.setAttribute('class','alert alert-success');
+                 message.setAttribute('role','alert');
+                 message.innerHTML='Successful login';
+                 notification.appendChild(message);
+                 message.style.display='block';
+                 setTimeout(() => message.style.display = 'none', 5000); 
 
             models.user.login(username,password)
             .then(response=>{
