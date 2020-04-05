@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "ember": "^1.0.3",
     "handlebars": "^4.7.3",
     "jquery": "^3.4.1",
     "popper": "^1.0.1",

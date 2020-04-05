@@ -11,6 +11,6 @@ export default{
         return firebase.auth().signOut();
     },
     get(id){
-        return firebase.firestore().collection('treks').doc(id).get(); //make request to specific document with id
+        return firebase.firestore().collection('articles').doc(id).get(); //make request to specific document with id
     }
 };

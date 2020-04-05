@@ -26,7 +26,6 @@ export default function(context){
       });
 
 return context.loadPartials({
-    notifications: "../views/common/notifications.hbs",
     header: "../views/common/header.hbs",
     footer: "../views/common/footer.hbs"
 })

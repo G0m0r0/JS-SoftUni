@@ -16,45 +16,17 @@ export default {
                 this.partial('../views/user/register.hbs');
             })
         },
-        logout(context){
+         logout(context){
             models.user.logout().then(response=>{
                 context.redirect('#/home');
-            })},
-        profile(context){                         
-            models.treck.getAll().then(response=>{
-                //console.log(response);
-                const trecks=response.docs.map(docModified);
-
-                let dataOfProfile={
-                    countTrecks: 0,
-                    nameTrecks: [],
-                };
-
-                trecks.forEach(el=>{
-                    if(el.data.uid===localStorage.getItem('userId')){
-                        dataOfProfile.countTrecks++;
-                        dataOfProfile.nameTrecks.push(el.data.location);
-                    }
-                });
-
-                if(dataOfProfile.nameTrecks.length===0){
-                    dataOfProfile.nameTrecks="No treks";
-                }
-
-                context.dataOfProfile=dataOfProfile;
-
-                 extend(context).then(function(){
-                    this.partial('../views/user/profile.hbs');
-                }) 
-            });
-        }
+            })}, 
     },
     post: {
         login(context){
             //console.log(context);
-            const {username,password}=context.params;
-            //console.log(username);
-           // console.log(password);
+            const {email,password}=context.params;
+            //console.log(email);
+            //console.log(password);
            
                 /*  const notification=document.getElementById('notifications');
                  const message=document.createElement('div');
@@ -66,25 +38,28 @@ export default {
                  message.style.display='block';
                  setTimeout(() => message.style.display = 'none', 5000);  */
 
-            models.user.login(username,password)
+            models.user.login(email,password)
             .then(response=>{
                 context.user=response;
-                context.username=response.email;
+                context.email=response.email;
                 context.isLoggedIn=true;
 
-                context.redirect('#/treck/dashboard');
+                context.redirect('#/dashboard');
             })
             .catch(error=>{
                 console.error(error);
             })
         },
         register(context){
-            const {username,password,rePassword}=context.params;
+            const {email,password,reppass}=context.params;
+           // console.log(email);
+            //console.log(password);
+            //console.log(reppass);
 
-            if(password===rePassword){
-                models.user.register(username,password)
+            if(password===reppass){
+                models.user.register(email,password)
                 .then(response=>{
-                    context.redirect("#/treck/dashboard");
+                    context.redirect("#/dashboard");
                 })
                 .catch(error=>{
                     console.error(error);
