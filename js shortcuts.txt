@@ -6,3 +6,6 @@ shift+Alt+A        comment multiline
 hold Alt+click     for multiType
 code spell checker for cheking the cpelling of words
 ctrl+/              comment text
+ctrl+arrows up/down move page up/down
+copy+shift+alt+arrows    to copy the line down/up
+copy+alt+arows up/down   to move the copy part up or down in the page
