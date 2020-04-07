@@ -1,0 +1,37 @@
+
+
+
+this.preventDefault;
+    $elements={
+       
+    }
+
+function createHtmlElement(tagName,className,textContent,attributeArr,event){
+      let element=document.createElement(tagName);
+
+      if(className){
+         element.classList.add(className);
+      }
+
+      if(textContent){
+         element.textContent=textContent;
+      }
+
+      if(attributeArr){
+         attributeArr.forEach(el => {
+            element.setAttribute(el.key,el.value);
+         });
+      }
+
+      if(event){
+         element.addEventListener(event.name,event.func);
+      }
+
+      return element;
+   }
+
+   function appendChildrenToParent(childrenArr,parent){
+      childrenArr.forEach(el=>parent.appendChild(el));
+
+      return  parent;
+   }

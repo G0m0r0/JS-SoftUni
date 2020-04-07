@@ -1,0 +1,63 @@
+jQuery bootstrap handlebars sammy firebase sdk auth(firebase)
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/team.css">
+    <link rel="stylesheet" type="text/css" href="css/details.css">
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script 
+    src="https://code.jquery.com/jquery-3.4.1.min.js" 
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
+    crossorigin="anonymous"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+   <script src="../node_modules/sammy/lib/min/sammy-0.7.6.min.js"></script>
+   <script src="../node_modules/sammy/lib/min/plugins/sammy.handlebars-0.7.6.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    
+    <script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAxkgHcQyo_Ph9c_7ORqa3uQiQPzYB2z3M",
+        authDomain: "softuniremotedb-my.firebaseapp.com",
+        databaseURL: "https://softuniremotedb-my.firebaseio.com",
+        projectId: "softuniremotedb-my",
+        storageBucket: "softuniremotedb-my.appspot.com",
+        messagingSenderId: "783698062841",
+        appId: "1:783698062841:web:2465e1744aed98c9116128"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+------sammy js------
+// initialize the application !!!!!!!!!!!!!!!!!vnimavai za #main trqbva da savpada!!!!
+var app = Sammy('#main', function() {
+  // include a plugin
+  this.use('Handlebars','hbs');
+
+  // define a 'route'
+  this.get('#/', function() {
+    // load some data
+    //this.load('posts.json')
+        // render a template
+        //.renderEach('post.mustache')
+        // swap the DOM with the new content
+        //.swap();
+console.log('Hello from sammy');
+console.log(this);
+this.partial('./templates/home/home.hbs');
+  });
+});
+
+// start the application
+$(()=>{
+    app.run('#/');
+})();

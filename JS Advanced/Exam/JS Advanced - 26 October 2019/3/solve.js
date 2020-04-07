@@ -92,22 +92,14 @@ class Forum{
         return "Your answer has been posted successfully";
     }
     showQuestions(){
-        let allQuestions='';
-        if(this.questions.length===0){
-            return '';
-        }
-        this.questions.forEach(el=>{
-            allQuestions+=`Question ${el.id} by ${el.postedBy}: ${el.question}\n`
-            if(el.answer.length===0){
-               allQuestions= allQuestions.trim();
-               // continue;
-            }
-            el.answers.forEach(el=>{
-                allQuestions+=`---${el.answeredBy}: ${el.answer}\n`
-            });
-            allQuestions= allQuestions.trim();
-        });
-        return allQuestions.trim();
+      let temp=this.questions;
+
+      return this.questions.reduce((acc,x,i)=>{
+          return acc+=`Question ${x.id} by ${x.postedBy}: ${x.question}`
+          +x.answers.reduce((answerAcc,answer)=>{
+            return answerAcc+=`\n---${answer.answeredBy}: ${answer.answer}`;
+          },'')+'\n';
+      },'').trim();
     }
 }
 
